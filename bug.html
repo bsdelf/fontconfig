@@ -1,0 +1,2040 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+  <head>
+    <title>Bug 33644 &ndash; Fontconfig doesn't match correctly in &lt;test&gt;</title>
+
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<link rel="Top" href="https://bugs.freedesktop.org/">
+
+  
+
+
+  
+    <link rel="Show" title="Dependency Tree"
+          href="showdependencytree.cgi?id=33644&amp;hide_resolved=1">
+      <link rel="Show" title="Dependency Graph"
+            href="showdependencygraph.cgi?id=33644">
+
+      <link rel="Show" title="Bug Activity"
+            href="show_activity.cgi?id=33644">
+      <link rel="Show" title="Printer-Friendly Version"
+            href="show_bug.cgi?format=multiple&amp;id=33644">
+
+
+
+    
+    
+    <link href="skins/standard/global.css?1348391854"
+          rel="alternate stylesheet" 
+          title="Classic"><link href="js/yui/assets/skins/sam/autocomplete.css?1348391854" rel="stylesheet"
+        type="text/css" ><link href="js/yui/assets/skins/sam/calendar.css?1348391854" rel="stylesheet"
+        type="text/css" ><link href="skins/standard/global.css?1348391854" rel="stylesheet"
+        type="text/css" ><link href="skins/standard/show_bug.css?1348391854" rel="stylesheet"
+        type="text/css" ><!--[if lte IE 7]>
+      
+
+
+
+  <link href="skins/standard/IE-fixes.css?1348391854" rel="stylesheet"
+        type="text/css" >
+<![endif]-->
+
+    
+<link href="skins/contrib/Dusk/global.css?1348391854" rel="alternate stylesheet"
+        type="text/css" title="Dusk">
+
+    
+
+    
+
+    
+<script type="text/javascript" src="js/yui/yahoo-dom-event/yahoo-dom-event.js?1348391854"></script><script type="text/javascript" src="js/yui/cookie/cookie-min.js?1348391854"></script><script type="text/javascript" src="js/yui/datasource/datasource-min.js?1348391854"></script><script type="text/javascript" src="js/yui/connection/connection-min.js?1348391854"></script><script type="text/javascript" src="js/yui/json/json-min.js?1348391854"></script><script type="text/javascript" src="js/yui/autocomplete/autocomplete-min.js?1348391854"></script><script type="text/javascript" src="js/yui/calendar/calendar-min.js?1348391854"></script><script type="text/javascript" src="js/global.js?1318747422"></script>
+
+    <script type="text/javascript">
+    <!--
+        YAHOO.namespace('bugzilla');
+        YAHOO.util.Event.addListener = function (el, sType, fn, obj, overrideContext) {
+               if ( ("onpagehide" in window || YAHOO.env.ua.gecko) && sType === "unload") { sType = "pagehide"; };
+               var capture = ((sType == "focusin" || sType == "focusout") && !YAHOO.env.ua.ie) ? true : false;
+               return this._addListener(el, this._getType(sType), fn, obj, overrideContext, capture);
+         };
+        if ( "onpagehide" in window || YAHOO.env.ua.gecko) {
+            YAHOO.util.Event._simpleRemove(window, "unload", 
+                                           YAHOO.util.Event._unload);
+        }
+        
+        function unhide_language_selector() { 
+            YAHOO.util.Dom.removeClass(
+                'lang_links_container', 'bz_default_hidden'
+            ); 
+        } 
+        YAHOO.util.Event.onDOMReady(unhide_language_selector);
+
+        
+        var BUGZILLA = {
+            param: {
+                cookiepath: '\/',
+                maxusermatches: 1000
+            },
+            constant: {
+                COMMENT_COLS: 80
+            },
+            string: {
+                
+
+                attach_desc_required:
+                    'You must enter a Description for this attachment.',
+                component_required:
+                    'You must select a Component for this bug.',
+                description_required:
+                    'You must enter a Description for this bug.',
+                short_desc_required:
+                    'You must enter a Summary for this bug.',
+                version_required:
+                    'You must select a Version for this bug.'
+            }
+        };
+
+    if( !document.location.href.match(/show_bug\.cgi/) && history && history.replaceState ) {
+      history.replaceState( null, 
+                         "Bug 33644 – Fontconfig doesn\'t match correctly in \x3ctest\x3e",  
+                         "show_bug.cgi?id=33644" );
+      document.title = "Bug 33644 – Fontconfig doesn\'t match correctly in \x3ctest\x3e";
+    }
+    // -->
+    </script>
+<script type="text/javascript" src="js/util.js?1318747422"></script><script type="text/javascript" src="js/field.js?1348391854"></script>
+
+    
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+                       title="Bugzilla" href="./search_plugin.cgi">
+    <link rel="shortcut icon" href="images/favicon.ico" >
+  </head>
+
+
+
+  <body onload=""
+        class="bugs-freedesktop-org bz_bug bz_status_RESOLVED bz_product_fontconfig bz_component_library bz_bug_33644 yui-skin-sam">
+
+
+
+<div id="header">
+<div id="banner">
+  </div>
+
+<table border="0" cellspacing="0" cellpadding="0" id="titles">
+<tr>
+    <td id="title">
+      <p>Bugzilla &ndash; Bug&nbsp;33644</p>
+    </td>
+
+    <td id="subtitle">
+      <p class="subheader">Fontconfig doesn't match correctly in &lt;test&gt;</p>
+    </td>
+
+    <td id="information">
+      <p class="header_addl_info">Last modified: 2012-05-24 22:20:56 UTC</p>
+    </td>
+</tr>
+</table>
+
+<table id="lang_links_container" cellpadding="0" cellspacing="0"
+       class="bz_default_hidden"><tr><td>
+</td></tr></table>
+<ul class="links">
+  <li><a href="./">Home</a></li>
+  <li><span class="separator">| </span><a href="enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="describecomponents.cgi">Browse</a></li>
+  <li><span class="separator">| </span><a href="query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" id="quicksearch_top" name="quicksearch" 
+           title="Quick Search" value="">
+    <input class="btn" type="submit" value="Search" 
+           id="find_top"></form>
+  <a href="page.cgi?id=quicksearch.html" title="Quicksearch Help">[?]</a></li>
+
+  <li><span class="separator">| </span><a href="report.cgi">Reports</a></li>
+
+  <li>
+      <span class="separator">| </span>
+        <a href="request.cgi">Requests</a></li>
+
+  <li>
+        <span class="separator">| </span>
+        <a href="docs/en/html/bug_page.html" target="_blank">Help</a>
+      </li>
+    
+      <li id="new_account_container_top">
+        <span class="separator">| </span>
+        <a href="createaccount.cgi">New&nbsp;Account</a>
+      </li>
+
+    <li id="mini_login_container_top">
+  <span class="separator">| </span>
+  <a id="login_link_top" href="https://bugs.freedesktop.org/show_bug.cgi?id=33644&amp;GoAheadAndLogIn=1"
+     onclick="return show_mini_login_form('_top')">Log In</a>
+
+  
+  <form action="https://bugs.freedesktop.org/show_bug.cgi?id=33644" method="POST" 
+        class="mini_login bz_default_hidden"
+        id="mini_login_top"
+        onsubmit="return check_mini_login_fields( '_top' );"
+  >
+    <input id="Bugzilla_login_top" 
+           class="bz_login"
+           name="Bugzilla_login"
+           title="Login"
+           onfocus="mini_login_on_focus('_top')"
+    >
+    <input class="bz_password" 
+           id="Bugzilla_password_top" 
+           name="Bugzilla_password"
+           type="password"
+           title="Password"
+    >
+    <input class="bz_password bz_default_hidden bz_mini_login_help" type="text" 
+           id="Bugzilla_password_dummy_top" value="password"
+           title="Password"
+           onfocus="mini_login_on_focus('_top')"
+    >
+    <input type="submit" name="GoAheadAndLogIn" value="Log in" 
+            id="log_in_top">
+    <script type="text/javascript">
+      mini_login_constants = {
+          "login" : "login",
+          "warning" : "You must set the login and password before logging in."
+      };
+      
+      if (YAHOO.env.ua.gecko || YAHOO.env.ua.ie || YAHOO.env.ua.opera) {
+          YAHOO.util.Event.onDOMReady(function() {
+              init_mini_login_form('_top');
+          });
+      }
+      else {
+          YAHOO.util.Event.on(window, 'load', function () {
+              window.setTimeout(function() {
+                  init_mini_login_form('_top');
+              }, 200);
+          });
+    }
+    </script>
+    <a href="#" onclick="return hide_mini_login_form('_top')">[x]</a>
+  </form>
+</li>
+<li id="forgot_container_top">
+  <span class="separator">| </span>
+  <a id="forgot_link_top" href="https://bugs.freedesktop.org/show_bug.cgi?id=33644&amp;GoAheadAndLogIn=1#forgot"
+     onclick="return show_forgot_form('_top')">Forgot Password</a>
+  <form action="token.cgi" method="post" id="forgot_form_top"
+        class="mini_forgot bz_default_hidden">
+    <label for="login_top">Login:</label>
+    <input type="text" name="loginname" size="20" id="login_top">
+    <input id="forgot_button_top" value="Reset Password" 
+           type="submit">
+    <input type="hidden" name="a" value="reqpw">
+    <input type="hidden" id="token" name="token" value="1405405126-cc9a471c62d6a48e258736f9fee0f990">
+    <a href="#" onclick="return hide_forgot_form('_top')">[x]</a>
+  </form>
+</li>
+</ul>
+</div> 
+
+<div id="bugzilla-body">
+
+<div class="navigation">
+  
+  <i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">This bug is not in your last
+    search results.</font></i>
+</div>
+<script type="text/javascript">
+  <!--
+  
+  /* Outputs a link to call replyToComment(); used to reduce HTML output */
+  function addReplyLink(id, real_id) {
+      /* XXX this should really be updated to use the DOM Core's
+       * createElement, but finding a container isn't trivial.
+       */
+        document.write('[<a href="#add_comment" onclick="replyToComment(' + 
+                       id + ',' + real_id + '); return false;">reply<' + '/a>]');
+  }
+
+  /* Adds the reply text to the `comment' textarea */
+  function replyToComment(id, real_id) {
+      var prefix = "(In reply to comment #" + id + ")\n";
+      var replytext = "";
+        /* pre id="comment_name_N" */
+        var text_elem = document.getElementById('comment_text_'+id);
+        var text = getText(text_elem);
+        replytext = prefix + wrapReplyText(text);
+
+
+      /* <textarea id="comment"> */
+      var textarea = document.getElementById('comment');
+      textarea.value += replytext;
+
+      textarea.focus();
+  }
+
+  if (typeof Node == 'undefined') {
+      /* MSIE doesn't define Node, so provide a compatibility object */
+      window.Node = {
+          TEXT_NODE: 3,
+          ENTITY_REFERENCE_NODE: 5
+      };
+  }
+
+  /* Concatenates all text from element's childNodes. This is used
+   * instead of innerHTML because we want the actual text (and
+   * innerText is non-standard).
+   */
+  function getText(element) {
+      var child, text = "";
+      for (var i=0; i < element.childNodes.length; i++) {
+          child = element.childNodes[i];
+          var type = child.nodeType;
+          if (type == Node.TEXT_NODE || type == Node.ENTITY_REFERENCE_NODE) {
+              text += child.nodeValue;
+          } else {
+              /* recurse into nodes of other types */
+              text += getText(child);
+          }
+      }
+      return text;
+  }
+
+
+  /* Index all classifications so we can keep track of the classification
+   * for the selected product, which could control field visibility.
+   */
+  var all_classifications = new Array(125);
+      all_classifications['a big freedesktop.org fly ribbon'] = 'Unclassified';
+      all_classifications['accountsservice'] = 'Unclassified';
+      all_classifications['Androgenizer'] = 'Unclassified';
+      all_classifications['apoc'] = 'Unclassified';
+      all_classifications['at-spi2'] = 'Unclassified';
+      all_classifications['burn'] = 'Unclassified';
+      all_classifications['Bustle'] = 'Unclassified';
+      all_classifications['cairo'] = 'Unclassified';
+      all_classifications['cairo-java'] = 'Unclassified';
+      all_classifications['cairomm'] = 'Unclassified';
+      all_classifications['ccss'] = 'Unclassified';
+      all_classifications['colord'] = 'Unclassified';
+      all_classifications['ConsoleKit'] = 'Unclassified';
+      all_classifications['create'] = 'Unclassified';
+      all_classifications['cups-pk-helper'] = 'Unclassified';
+      all_classifications['dbus'] = 'Unclassified';
+      all_classifications['DejaVu'] = 'Unclassified';
+      all_classifications['desktop-file-utils'] = 'Unclassified';
+      all_classifications['dolt'] = 'Unclassified';
+      all_classifications['DRI'] = 'Unclassified';
+      all_classifications['evemu'] = 'Unclassified';
+      all_classifications['evtest'] = 'Unclassified';
+      all_classifications['exempi'] = 'Unclassified';
+      all_classifications['Farstream'] = 'Unclassified';
+      all_classifications['fontconfig'] = 'Unclassified';
+      all_classifications['freedesktop.org'] = 'Unclassified';
+      all_classifications['freedrtools'] = 'Unclassified';
+      all_classifications['freetype'] = 'Unclassified';
+      all_classifications['FriBidi'] = 'Unclassified';
+      all_classifications['Galago'] = 'Unclassified';
+      all_classifications['GeoClue'] = 'Unclassified';
+      all_classifications['ghns'] = 'Unclassified';
+      all_classifications['GLU3'] = 'Unclassified';
+      all_classifications['gstreamer'] = 'Unclassified';
+      all_classifications['GStreamer SDK'] = 'Unclassified';
+      all_classifications['GTK-Qt Engine'] = 'Unclassified';
+      all_classifications['guile-cairo'] = 'Unclassified';
+      all_classifications['Gypsy'] = 'Unclassified';
+      all_classifications['hal'] = 'Unclassified';
+      all_classifications['HarfBuzz'] = 'Unclassified';
+      all_classifications['Hieroglyph'] = 'Unclassified';
+      all_classifications['Icon theme'] = 'Unclassified';
+      all_classifications['ITS Tool'] = 'Unclassified';
+      all_classifications['kmscon'] = 'Unclassified';
+      all_classifications['LDTP'] = 'Unclassified';
+      all_classifications['libasyncns'] = 'Unclassified';
+      all_classifications['libatasmart'] = 'Unclassified';
+      all_classifications['libbacklight'] = 'Unclassified';
+      all_classifications['libbsd'] = 'Unclassified';
+      all_classifications['libcanberra'] = 'Unclassified';
+      all_classifications['libdlo'] = 'Unclassified';
+      all_classifications['libevdev'] = 'Unclassified';
+      all_classifications['libfprint'] = 'Unclassified';
+      all_classifications['libjpeg'] = 'Unclassified';
+      all_classifications['libmbim'] = 'Unclassified';
+      all_classifications['libminidump'] = 'Unclassified';
+      all_classifications['liboil'] = 'Unclassified';
+      all_classifications['libopenraw'] = 'Unclassified';
+      all_classifications['libqmi'] = 'Unclassified';
+      all_classifications['LibreOffice'] = 'Unclassified';
+      all_classifications['libspectre'] = 'Unclassified';
+      all_classifications['libstartup-notification'] = 'Unclassified';
+      all_classifications['libva'] = 'Unclassified';
+      all_classifications['libxkbcommon'] = 'Unclassified';
+      all_classifications['libxklavier'] = 'Unclassified';
+      all_classifications['LTSP'] = 'Unclassified';
+      all_classifications['media-player-info'] = 'Unclassified';
+      all_classifications['Mesa'] = 'Unclassified';
+      all_classifications['MPRIS'] = 'Unclassified';
+      all_classifications['nice'] = 'Unclassified';
+      all_classifications['nickle'] = 'Unclassified';
+      all_classifications['OHM'] = 'Unclassified';
+      all_classifications['openfontlibrary'] = 'Unclassified';
+      all_classifications['OpenRaster'] = 'Unclassified';
+      all_classifications['Orc'] = 'Unclassified';
+      all_classifications['p11-glue'] = 'Unclassified';
+      all_classifications['PackageKit'] = 'Unclassified';
+      all_classifications['papyon'] = 'Unclassified';
+      all_classifications['piglit'] = 'Unclassified';
+      all_classifications['pixman'] = 'Unclassified';
+      all_classifications['pkg-config'] = 'Unclassified';
+      all_classifications['plymouth'] = 'Unclassified';
+      all_classifications['pm-utils'] = 'Unclassified';
+      all_classifications['PolicyKit'] = 'Unclassified';
+      all_classifications['poppler'] = 'Unclassified';
+      all_classifications['Portland'] = 'Unclassified';
+      all_classifications['PulseAudio'] = 'Unclassified';
+      all_classifications['pycairo'] = 'Unclassified';
+      all_classifications['python-geoclue'] = 'Unclassified';
+      all_classifications['PyXDG'] = 'Unclassified';
+      all_classifications['Rarian'] = 'Unclassified';
+      all_classifications['realmd'] = 'Unclassified';
+      all_classifications['roadster'] = 'Unclassified';
+      all_classifications['scim'] = 'Unclassified';
+      all_classifications['Scratchbox 2'] = 'Unclassified';
+      all_classifications['shared-desktop-ontologies'] = 'Unclassified';
+      all_classifications['shared-mime-info'] = 'Unclassified';
+      all_classifications['Spam'] = 'Unclassified';
+      all_classifications['Specifications'] = 'Unclassified';
+      all_classifications['Spice'] = 'Unclassified';
+      all_classifications['STSF'] = 'Unclassified';
+      all_classifications['swfdec'] = 'Unclassified';
+      all_classifications['SyncEvolution'] = 'Unclassified';
+      all_classifications['systemd'] = 'Unclassified';
+      all_classifications['system-tools-backends'] = 'Unclassified';
+      all_classifications['tango'] = 'Unclassified';
+      all_classifications['Telepathy'] = 'Unclassified';
+      all_classifications['tinderbox'] = 'Unclassified';
+      all_classifications['udisks'] = 'Unclassified';
+      all_classifications['UIM'] = 'Unclassified';
+      all_classifications['upower'] = 'Unclassified';
+      all_classifications['Wayland'] = 'Unclassified';
+      all_classifications['Wocky'] = 'Unclassified';
+      all_classifications['XCB'] = 'Unclassified';
+      all_classifications['xdgmime'] = 'Unclassified';
+      all_classifications['xdg-sound-theme'] = 'Unclassified';
+      all_classifications['xdg-user-dirs'] = 'Unclassified';
+      all_classifications['xesam'] = 'Unclassified';
+      all_classifications['xkeyboard-config'] = 'Unclassified';
+      all_classifications['xorg'] = 'Unclassified';
+      all_classifications['X.org integration tests'] = 'Unclassified';
+      all_classifications['XStandards'] = 'Unclassified';
+      all_classifications['Xtests'] = 'Unclassified';
+      all_classifications['Ytstenut'] = 'Unclassified';
+      all_classifications['Zeitgeist'] = 'Unclassified';
+
+  //-->
+  </script>
+
+<form name="changeform" id="changeform" method="post" action="process_bug.cgi">
+
+  <input type="hidden" name="delta_ts" value="2012-05-24 22:20:56">
+  <input type="hidden" name="longdesclength" value="23">
+  <input type="hidden" name="id" value="33644">
+  <input type="hidden" name="token" value="1405405127-4a13ecbd1744e3dcafccd07c408da092">
+<div class="bz_alias_short_desc_container edit_form">
+     <a href="show_bug.cgi?id=33644"><b>Bug&nbsp;33644</b></a> -<span id="summary_alias_container" class="bz_default_hidden"> 
+      <span id="short_desc_nonedit_display">Fontconfig doesn't match correctly in &lt;test&gt;</span>
+     </span>
+  
+       
+    <div id="summary_alias_input">
+      <table id="summary"> 
+          <tr>
+            <td colspan="2">
+          </td>
+        </tr> 
+        
+        <tr>
+          <td>
+            <label accesskey="s" for="short_desc"><u>S</u>ummary</label>:
+          </td>
+          <td>Fontconfig doesn't match correctly in &lt;test&gt;
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <script type="text/javascript">
+    hideAliasAndSummary('Fontconfig doesn\'t match correctly in \x3ctest\x3e', '');
+  </script>
+  <table class="edit_form">
+    <tr>
+      
+      <td id="bz_show_bug_column_1" class="bz_show_bug_column">     
+        <table>
+          <tr>
+    <td class="field_label">
+      <b><a href="page.cgi?id=fields.html#status">Status</a></b>:
+    </td>
+    <td id="bz_field_status">
+      <span id="static_bug_status">RESOLVED
+          FIXED
+      </span>
+    </td>
+  </tr>
+          <tr>
+    <td colspan="2" class="bz_section_spacer"></td>
+  </tr>
+          <tr><th class="field_label "
+    id="field_label_product">
+
+
+  <a 
+      title="Bugs are categorised into Products and Components."
+      class="field_help_link"
+      href="describecomponents.cgi"
+  >Product:</a>
+
+</th>
+  <td class="field_value "
+      id="field_container_product" >fontconfig</td>
+    </tr>
+
+    
+    <tr class="bz_default_hidden"><th class="field_label "
+    id="field_label_classification">
+
+
+  <a 
+      title="Bugs are categorised into Classifications, Products and Components. classifications is the top-level categorisation."
+      class="field_help_link"
+      href="page.cgi?id=fields.html#classification"
+  >Classification:</a>
+
+</th>
+  <td class="field_value "
+      id="field_container_classification" >Unclassified</td>
+    </tr>
+        
+    
+    
+    <tr><th class="field_label "
+    id="field_label_component">
+
+
+  <a 
+      title="Components are second-level categories; each belongs to a particular Product. Select a Product to narrow down this list."
+      class="field_help_link"
+      href="describecomponents.cgi?product=fontconfig"
+  >Component:</a>
+
+</th>
+  <td class="field_value "
+      id="field_container_component" >library</td>
+    </tr>
+    <tr id="version_warning" style="display: none"><td class="field_label">&nbsp;</td>
+      <td class="field_value">
+      </td>
+    </tr>
+    <tr>
+      <td class="field_label">
+        <label for="version"><b>Version</b></label>:
+      </td><td>2_1
+  </td>
+      <script>
+	var defVerIdx = document.getElementById("version").selectedIndex;
+	function versionWarn() {
+	  var vs = document.getElementById("version");
+	  if (vs.selectedIndex > defVerIdx) {
+	    document.getElementById("version_warning").style.display = "table-row";
+	  } else {
+	    document.getElementById("version_warning").style.display = "none";
+	  }
+	}	
+      </script>
+    </tr>
+        
+    
+        
+    <tr>
+      <td class="field_label">
+        <label for="rep_platform" accesskey="h"><b>Platform</b></label>:
+      </td>
+      <td class="field_value">All
+       All
+       <script type="text/javascript">
+         assignToDefaultOnChange(['product', 'component']);
+       </script>
+      </td>
+    </tr>
+          <tr>
+    <td colspan="2" class="bz_section_spacer"></td>
+  </tr>
+          
+          <tr>
+      <td class="field_label">
+        <label for="priority" accesskey="i">
+          <b><a href="page.cgi?id=fields.html#importance"><u>I</u>mportance</a></b></label>:
+      </td>
+      <td>medium
+       normal
+      </td>
+    </tr>            
+          
+          <tr>
+      <td class="field_label">
+        <b><a href="page.cgi?id=fields.html#assigned_to">Assigned To</a></b>:
+      </td>
+      <td><span class="vcard"><span class="fn">Akira TAGOH</span>
+</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="field_label">
+        <label for="qa_contact" accesskey="q"><b><u>Q</u>A Contact</b></label>:
+      </td>
+      <td><span class="vcard"><span class="fn">Behdad Esfahbod</span>
+</span>
+      </td>
+    </tr>
+          <tr>
+    <td colspan="2" class="bz_section_spacer"></td>
+  </tr>
+          <tr><th class="field_label "
+    id="field_label_bug_file_loc">
+
+    <label for="bug_file_loc" accesskey="u">
+
+  <a 
+      title="Bugs can have a URL associated with them - for example, a pointer to a web site where the problem is seen."
+      class="field_help_link"
+      href="page.cgi?id=fields.html#bug_file_loc"
+  >URL:</a>
+</label>
+</th>
+    <td>
+      <span id="bz_url_input_area">
+      </span>
+    </td>
+  </tr>
+  
+    <tr>
+      <td class="field_label">
+        <label for="status_whiteboard" accesskey="w"><b><u>W</u>hiteboard</b></label>:
+      </td><td colspan="2">  
+  </td>
+    </tr>
+  
+    <tr>
+      <td class="field_label">
+        <label for="keywords" accesskey="k">
+          <b><a href="describekeywords.cgi"><u>K</u>eywords</a></b></label>:
+      </td>
+      <td class="field_value" colspan="2">
+      </td>
+    </tr>
+          <tr>
+    <td colspan="2" class="bz_section_spacer"></td>
+  </tr>
+          
+          <tr><th class="field_label "
+    id="field_label_dependson">
+
+
+  <a 
+      title="The bugs listed here must be resolved before this bug can be resolved."
+      class="field_help_link"
+      href="page.cgi?id=fields.html#dependson"
+  >Depends on:</a>
+
+</th>
+
+  <td>
+    <span id="dependson_input_area">
+    </span>
+    
+  </td>
+  </tr>
+  
+  <tr><th class="field_label "
+    id="field_label_blocked">
+
+
+  <a 
+      title="This bug must be resolved before the bugs listed in this field can be resolved."
+      class="field_help_link"
+      href="page.cgi?id=fields.html#blocked"
+  >Blocks:</a>
+
+</th>
+
+  <td>
+    <span id="blocked_input_area">
+    </span>
+    
+  </td>
+  
+  <tr>
+    <th>&nbsp;</th>
+  
+    <td colspan="2" align="left" id="show_dependency_tree_or_graph">
+      Show dependency <a href="showdependencytree.cgi?id=33644&amp;hide_resolved=1">tree</a>
+  
+        /&nbsp;<a href="showdependencygraph.cgi?id=33644">graph</a>
+    </td>
+  </tr>
+          
+        </table>
+      </td>
+      <td>
+        <div class="bz_column_spacer">&nbsp;</div>
+      </td>
+      
+      <td id="bz_show_bug_column_2" class="bz_show_bug_column">
+        <table cellpadding="3" cellspacing="1">
+        <tr>
+    <td class="field_label">
+      <b>Reported</b>:
+    </td>
+    <td>2011-01-28 04:12 UTC by <span class="vcard"><span class="fn">Yichao Zhou</span>
+</span>
+    </td>
+  </tr>
+  
+  <tr>
+    <td class="field_label">
+      <b> Modified</b>:
+    </td>
+    <td>2012-05-24 22:20 UTC 
+      (<a href="show_activity.cgi?id=33644">History</a>)
+    </td>
+  
+  </tr>
+         <tr>
+      <td class="field_label">
+        <label for="newcc" accesskey="a"><b>CC List</b>:</label>
+      </td>
+      <td>3 
+          users
+          <span id="cc_edit_area_showhide_container" class="bz_default_hidden">
+            (<a href="#" id="cc_edit_area_showhide">show</a>)
+          </span>
+        <div id="cc_edit_area">
+          <br>
+            <select id="cc" multiple="multiple" size="5">
+                <option value="akira">akira</option>
+                <option value="fontconfig-bugs">fontconfig-bugs</option>
+                <option value="freedesktop">freedesktop</option>
+            </select>
+        </div>
+          <script type="text/javascript">
+            hideEditableField( 'cc_edit_area_showhide_container', 
+                               'cc_edit_area', 
+                               'cc_edit_area_showhide', 
+                               '', 
+                               '');  
+          </script>
+      </td>
+    </tr>
+         <tr>
+    <td colspan="2" class="bz_section_spacer"></td>
+  </tr>
+<tr><th class="field_label "
+    id="field_label_see_also">
+
+
+  <a 
+      title="This allows you to refer to bugs in other installations. You can enter a URL to a bug in the 'Add Bug URLs' field to note that that bug is related to this one. You can enter multiple URLs at once by separating them with a comma. You should normally use this field to refer to bugs in other installations. For bugs in this installation, it is better to use the Depends on and Blocks fields."
+      class="field_help_link"
+      href="page.cgi?id=fields.html#see_also"
+  >See Also:</a>
+
+</th>
+  <td class="field_value "
+      id="field_container_see_also" ></td>
+    </tr> 
+         
+         <tr>
+    <td colspan="2" class="bz_section_spacer"></td>
+  </tr>
+         
+                
+
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+          <hr id="bz_top_half_spacer">
+      </td>
+    </tr>
+  </table>
+
+  <table id="bz_big_form_parts" cellspacing="0" cellpadding="0"><tr>
+  <td>
+
+    
+<script type="text/javascript">
+<!--
+function toggle_display(link) {
+    var table = document.getElementById("attachment_table");
+    var view_all = document.getElementById("view_all");
+    var hide_obsolete_url_parameter = "&hide_obsolete=1";
+    // Store current height for scrolling later
+    var originalHeight = table.offsetHeight;
+    var rows = YAHOO.util.Dom.getElementsByClassName(
+        'bz_tr_obsolete', 'tr', table);
+
+    for (var i = 0; i < rows.length; i++) {
+        bz_toggleClass(rows[i], 'bz_default_hidden');
+    }
+
+    if (YAHOO.util.Dom.hasClass(rows[0], 'bz_default_hidden')) {
+        link.innerHTML = "Show Obsolete";
+        view_all.href = view_all.href + hide_obsolete_url_parameter 
+    }
+    else {
+        link.innerHTML = "Hide Obsolete";
+        view_all.href = view_all.href.replace(hide_obsolete_url_parameter,"");
+    }
+
+    var newHeight = table.offsetHeight;
+    // This scrolling makes the window appear to not move at all.
+    window.scrollBy(0, newHeight - originalHeight);
+
+    return false;
+}
+//-->
+</script>
+
+<br>
+<table id="attachment_table" cellspacing="0" cellpadding="4">
+  <tr id="a0">
+    <th colspan="2" align="left">
+      Attachments
+    </th>
+  </tr>
+
+
+      <tr id="a1" class="bz_contenttype_text_plain">
+        <td valign="top">
+            <a href="attachment.cgi?id=42636"
+               title="View the content of the attachment">
+          <b>My local.conf</b></a>
+
+          <span class="bz_attach_extra_info">
+              (1.66 KB,
+                text/plain)
+
+            <br>
+            <a href="#attach_42636"
+               title="Go to the comment associated with the attachment">2011-01-28 04:12 UTC</a>,
+<span class="vcard"><span class="fn">Yichao Zhou</span>
+</span>
+          </span>
+        </td>
+
+
+        <td valign="top">
+          <a href="attachment.cgi?id=42636&amp;action=edit">Details</a>
+        </td>
+      </tr>
+      <tr id="a2" class="bz_contenttype_text_plain">
+        <td valign="top">
+            <a href="attachment.cgi?id=42637"
+               title="View the content of the attachment">
+          <b>Result of tree</b></a>
+
+          <span class="bz_attach_extra_info">
+              (3.49 KB,
+                text/plain)
+
+            <br>
+            <a href="#attach_42637"
+               title="Go to the comment associated with the attachment">2011-01-28 04:13 UTC</a>,
+<span class="vcard"><span class="fn">Yichao Zhou</span>
+</span>
+          </span>
+        </td>
+
+
+        <td valign="top">
+          <a href="attachment.cgi?id=42637&amp;action=edit">Details</a>
+        </td>
+      </tr>
+
+  <tr class="bz_attach_footer">
+    <td colspan="2">
+        <span class="bz_attach_view_hide">
+            <a id="view_all" href="attachment.cgi?bugid=33644&amp;action=viewall">View All</a>
+        </span>
+        <a href="attachment.cgi?bugid=33644&amp;action=enter">Add an attachment</a>
+        (proposed patch, testcase, etc.)
+    </td>
+  </tr>
+</table>
+<br>
+<div id="add_comment" class="bz_section_additional_comments">
+      <table>
+        <tr>
+          <td>
+            <fieldset>
+              <legend>Note</legend>
+              You need to
+              <a href="show_bug.cgi?id=33644&amp;GoAheadAndLogIn=1">log in</a>
+              before you can comment on or make changes to this bug.
+            </fieldset>
+          </td>
+        </tr> 
+      </table>
+  </div>
+  </td>
+  <td>
+  </td>
+  </tr></table>
+
+  
+  <div id="comments"><script src="js/comments.js?1348391854" type="text/javascript">
+</script>
+
+
+
+
+
+
+
+<!-- This auto-sizes the comments and positions the collapse/expand links 
+     to the right. -->
+<table class="bz_comment_table" cellpadding="0" cellspacing="0"><tr>
+<td>
+<div id="c0" class="bz_comment bz_first_comment">
+
+      <div class="bz_first_comment_head">
+
+
+
+        <span class="bz_comment_number">
+          <a 
+             href="show_bug.cgi?id=33644#c0">Description</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><span class="fn">Yichao Zhou</span>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2011-01-28 04:12:42 UTC
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" >Created <span class=""><a href="attachment.cgi?id=42636" name="attach_42636" title="My local.conf">attachment 42636</a> <a href="attachment.cgi?id=42636&amp;action=edit" title="My local.conf">[details]</a></span>
+My local.conf
+
+There is a line in my local.conf(I only modify it):
+
+        &lt;match target=&quot;pattern&quot;&gt;
+                &lt;test name=&quot;family&quot;&gt;
+                        &lt;string&gt;Courier&lt;/string&gt;
+                        &lt;string&gt;Courier New&lt;/string&gt;
+                &lt;/test&gt;
+                &lt;edit binding=&quot;strong&quot; mode=&quot;prepend&quot; name=&quot;family&quot;&gt;
+                        &lt;string&gt;monospace&lt;/string&gt;
+                &lt;/edit&gt;
+        &lt;/match&gt;
+
+$ fc-match &quot;Courier&quot;
+DejaVuSansMono.ttf: &quot;DejaVu Sans Mono&quot; &quot;Book&quot;
+
+$fc-match &quot;Courier New&quot;
+cour.ttf: &quot;Courier New&quot; &quot;Normal&quot;
+
+It seems that the &quot;Courier New&quot; doesn't match correctly.
+I can't find the reason.
+
+But after I just swap 2 line:
+        &lt;match target=&quot;pattern&quot;&gt;
+                &lt;test name=&quot;family&quot;&gt;
+                        &lt;string&gt;Courier New&lt;/string&gt;
+                        &lt;string&gt;Courier&lt;/string&gt;
+                &lt;/test&gt;
+                &lt;edit binding=&quot;strong&quot; mode=&quot;prepend&quot; name=&quot;family&quot;&gt;
+                        &lt;string&gt;monospace&lt;/string&gt;
+                &lt;/edit&gt;
+        &lt;/match&gt;
+
+The result changes!
+
+$ fc-match &quot;Courier New&quot;
+DejaVuSansMono.ttf: &quot;DejaVu Sans Mono&quot; &quot;Book&quot;
+
+$ fc-match &quot;Courier&quot;
+n022003l.pfb: &quot;Nimbus Mono L&quot; &quot;Regular&quot;
+
+The order of string in &lt;test&gt; shouldn't affect the result.
+The first line in &lt;test&gt; gets match, but I think the default behavior of test is OR.
+
+I don't know fontconfig very much. So is it a bug?</pre>
+    </div>
+  <div id="c1" class="bz_comment">
+
+      <div class="bz_comment_head">
+
+
+
+        <span class="bz_comment_number">
+          <a 
+             href="show_bug.cgi?id=33644#c1">Comment 1</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><span class="fn">Yichao Zhou</span>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2011-01-28 04:13:21 UTC
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" >Created <span class=""><a href="attachment.cgi?id=42637" name="attach_42637" title="Result of tree">attachment 42637</a> <a href="attachment.cgi?id=42637&amp;action=edit" title="Result of tree">[details]</a></span>
+Result of tree</pre>
+    </div>
+  <div id="c2" class="bz_comment">
+
+      <div class="bz_comment_head">
+
+
+
+        <span class="bz_comment_number">
+          <a 
+             href="show_bug.cgi?id=33644#c2">Comment 2</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><span class="fn">Behdad Esfahbod</span>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2011-03-14 15:08:33 UTC
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" >According to the docs you can test for one value at a time.  So your config is incorrect.  We should warn in that case though.
+
+From fontconfig-user.html:
+
+&lt;test qual=&quot;any&quot; name=&quot;property&quot; target=&quot;default&quot; compare=&quot;eq&quot;&gt;
+
+This element contains a single value which is compared with the target ('pattern', 'font', 'scan' or 'default') property &quot;property&quot; (substitute any of the property names seen above). 'compare' can be one of &quot;eq&quot;, &quot;not_eq&quot;, &quot;less&quot;, &quot;less_eq&quot;, &quot;more&quot;, or &quot;more_eq&quot;. 'qual' may either be the default, &quot;any&quot;, in which case the match succeeds if any value associated with the property matches the test value, or &quot;all&quot;, in which case all of the values associated with the property must match the test value. When used in a &lt;match target=&quot;font&quot;&gt; element, the target= attribute in the &lt;test&gt; element selects between matching the original pattern or the font. &quot;default&quot; selects whichever target the outer &lt;match&gt; element has selected.</pre>
+    </div>
+  <div id="c3" class="bz_comment">
+
+      <div class="bz_comment_head">
+
+
+
+        <span class="bz_comment_number">
+          <a 
+             href="show_bug.cgi?id=33644#c3">Comment 3</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><span class="fn">Akira TAGOH</span>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2011-06-17 01:58:25 UTC
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" >proposed patch to warn.
+
+<a href="http://cgit.freedesktop.org/~tagoh/fontconfig/commit/?h=bz33644&amp;id=b803ff89a601035b4a49f01244b4c64a9024226e">http://cgit.freedesktop.org/~tagoh/fontconfig/commit/?h=bz33644&amp;id=b803ff89a601035b4a49f01244b4c64a9024226e</a>
+
+should we get rid of &quot;return;&quot; on fail perhaps? is it too strict? and may be better giving aid to the first value for backward compatibility?</pre>
+    </div>
+  <div id="c4" class="bz_comment">
+
+      <div class="bz_comment_head">
+
+
+
+        <span class="bz_comment_number">
+          <a 
+             href="show_bug.cgi?id=33644#c4">Comment 4</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><span class="fn">Akira TAGOH</span>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2011-06-21 00:19:56 UTC
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" >Behdad, what is the expected syntax to match &quot;Courier&quot; or &quot;Courier New&quot; on the family name FWIW?
+
+I've tried to figure it out with:
+
+&lt;match&gt;
+  &lt;test name=&quot;family&quot;&gt;
+    &lt;or&gt;
+      &lt;string&gt;Courier New&lt;/string&gt;
+      &lt;string&gt;Courier&lt;/string&gt;
+    &lt;/or&gt;
+  &lt;/test&gt;
+  ...
+&lt;/match&gt;
+
+and
+
+&lt;match&gt;
+  &lt;test name=&quot;family&quot;&gt;
+    &lt;string&gt;Courier New&lt;/string&gt;
+    &lt;or&gt;
+      &lt;test name=&quot;family&quot;&gt;
+        &lt;string&gt;Courier&lt;/string&gt;
+      &lt;/test&gt;
+    &lt;/or&gt;
+  &lt;/test&gt;
+  ...
+&lt;/match&gt;
+
+I didn't get any luck yet. there might be a bug on it too?</pre>
+    </div>
+  <div id="c5" class="bz_comment">
+
+      <div class="bz_comment_head">
+
+
+
+        <span class="bz_comment_number">
+          <a 
+             href="show_bug.cgi?id=33644#c5">Comment 5</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><span class="fn">Behdad Esfahbod</span>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2011-06-22 08:38:46 UTC
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" >I don't remember.  Either try, or check the code?</pre>
+    </div>
+  <div id="c6" class="bz_comment">
+
+      <div class="bz_comment_head">
+
+
+
+        <span class="bz_comment_number">
+          <a 
+             href="show_bug.cgi?id=33644#c6">Comment 6</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><span class="fn">Akira TAGOH</span>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2011-06-23 22:36:18 UTC
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" >I did try both. it looks like not supported so far, or I might be misunderstanding of &lt;or&gt; operator.
+that's why I'm asking for the correct syntax. that needs to be clarified to get it working...</pre>
+    </div>
+  <div id="c7" class="bz_comment">
+
+      <div class="bz_comment_head">
+
+
+
+        <span class="bz_comment_number">
+          <a 
+             href="show_bug.cgi?id=33644#c7">Comment 7</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><span class="fn">Akira TAGOH</span>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2011-09-04 19:13:53 UTC
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" >I guess current behavior of the &lt;or&gt; operator isn't what we expect in this issue because it results the boolean value against the evaluation, but not the string as the font name, which we expect here.
+
+I thought we should have a warning if &lt;test&gt; has more font names though, but we may need to consider this again, including the aspect from the documentation bug.
+
+just for updates.</pre>
+    </div>
+  <div id="c8" class="bz_comment">
+
+      <div class="bz_comment_head">
+
+
+
+        <span class="bz_comment_number">
+          <a 
+             href="show_bug.cgi?id=33644#c8">Comment 8</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><span class="fn">Akira TAGOH</span>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2012-04-02 00:43:42 UTC
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" >thinking about this again, supporting FcOpComma in &lt;test&gt; sounds making sense.
+For the case of object == A and object == B:
+
+&lt;test name=&quot;object&quot; qual=&quot;all&quot;&gt;
+  &lt;string&gt;A&lt;/string&gt;
+  &lt;string&gt;B&lt;/string&gt;
+&lt;/test&gt;
+
+For the case of object == A or object == B:
+
+&lt;test name=&quot;object&quot; qual=&quot;any&quot;&gt;
+  &lt;string&gt;A&lt;/string&gt;
+  &lt;string&gt;B&lt;/string&gt;
+&lt;/test&gt;</pre>
+    </div>
+  <div id="c9" class="bz_comment">
+
+      <div class="bz_comment_head">
+
+
+
+        <span class="bz_comment_number">
+          <a 
+             href="show_bug.cgi?id=33644#c9">Comment 9</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><span class="fn">Akira TAGOH</span>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2012-04-02 01:17:14 UTC
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" >Ah, I think this isn't a bug...
+
+(In reply to <a href="show_bug.cgi?id=33644#c0">comment #0</a>)
+<span class="quote">&gt; $ fc-match &quot;Courier&quot;
+&gt; DejaVuSansMono.ttf: &quot;DejaVu Sans Mono&quot; &quot;Book&quot;
+&gt; 
+&gt; $fc-match &quot;Courier New&quot;
+&gt; cour.ttf: &quot;Courier New&quot; &quot;Normal&quot;</span >
+
+This is because you have &quot;Courier New&quot; font and it appears earlier in the pattern. the default qual is &quot;any&quot;. as I wrote in <a href="show_bug.cgi?id=33644#c8">comment#8</a>, that is equal to &quot;or&quot;. if you have &quot;Courier&quot; in the pattern, fontconfig will apply the rules for the first matched value in the test pattern. thus, the above doesn't work, because fontconfig adds &quot;monospace&quot; prior to &quot;Courier&quot; in the family object. it looks like:
+
+[..., &quot;Courier New&quot;, ... &quot;monospace&quot;, &quot;Courier&quot;, ...] then. so the folowing rule just works:
+
+<span class="quote">&gt; But after I just swap 2 line:
+&gt;         &lt;match target=&quot;pattern&quot;&gt;
+&gt;                 &lt;test name=&quot;family&quot;&gt;
+&gt;                         &lt;string&gt;Courier New&lt;/string&gt;
+&gt;                         &lt;string&gt;Courier&lt;/string&gt;
+&gt;                 &lt;/test&gt;
+&gt;                 &lt;edit binding=&quot;strong&quot; mode=&quot;prepend&quot; name=&quot;family&quot;&gt;
+&gt;                         &lt;string&gt;monospace&lt;/string&gt;
+&gt;                 &lt;/edit&gt;
+&gt;         &lt;/match&gt;
+&gt; 
+&gt; The result changes!</span >
+
+This really depends on how the family names appears in the pattern.
+To do what you want regardless of the order of the family name in the pattern, you may want to try:
+
+&lt;edit name=&quot;family&quot; mode=&quot;prepend_first&quot; binding=&quot;strong&quot;&gt;
+  &lt;string&gt;monospace&lt;/string&gt;
+&lt;/edit&gt;
+
+BTW I will check the code if test element supports the multiple values. we need to update docs at least.</pre>
+    </div>
+  <div id="c10" class="bz_comment">
+
+      <div class="bz_comment_head">
+
+
+
+        <span class="bz_comment_number">
+          <a 
+             href="show_bug.cgi?id=33644#c10">Comment 10</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><span class="fn">Akira TAGOH</span>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2012-04-02 01:37:07 UTC
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" >just a note:
+
+This may be a bit relevant to <a class="bz_bug_link 
+          bz_status_RESOLVED  bz_closed"
+   title="RESOLVED FIXED - &lt;alias&gt; ignores &lt;match&gt; &lt;test&gt;s"
+   href="show_bug.cgi?id=22862">Bug#22862</a>, having a lot of rules instead of using FcOpComma waste the memory. however using &quot;prepend_first&quot; for the workaround of the above issue isn't necessarily a good idea, because it behaves differently.
+
+we may want to have another mode to add the value to where appears earlier in the pattern. another idea is to change the behavior of &quot;prepend&quot;, &quot;append&quot;, &quot;assign&quot; and &quot;assign_replace&quot; like so for multiple values.</pre>
+    </div>
+  <div id="c11" class="bz_comment">
+
+      <div class="bz_comment_head">
+
+
+
+        <span class="bz_comment_number">
+          <a 
+             href="show_bug.cgi?id=33644#c11">Comment 11</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><span class="fn">Yichao Zhou</span>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2012-04-02 01:45:08 UTC
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" >Thanks for responding.  But I do not quiet understand what you means.
+
+Rule is
+        &lt;match target=&quot;pattern&quot;&gt;
+                &lt;test name=&quot;family&quot;&gt;
+                        &lt;string&gt;Courier&lt;/string&gt;
+                        &lt;string&gt;Courier New&lt;/string&gt;
+                &lt;/test&gt;
+                &lt;edit binding=&quot;strong&quot; mode=&quot;prepend&quot; name=&quot;family&quot;&gt;
+                        &lt;string&gt;monospace&lt;/string&gt;
+                &lt;/edit&gt;
+        &lt;/match&gt;
+
+Suppose we do
+$ fc-match &quot;Courier New&quot;
+
+The query before the rule apply is [ .. &quot;Courier New&quot; .. ].
+
+Why after the rule applied, monospace is not added before &quot;Courier New&quot;?</pre>
+    </div>
+  <div id="c12" class="bz_comment">
+
+      <div class="bz_comment_head">
+
+
+
+        <span class="bz_comment_number">
+          <a 
+             href="show_bug.cgi?id=33644#c12">Comment 12</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><span class="fn">Akira TAGOH</span>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2012-04-02 01:56:16 UTC
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi?id=33644#c11">comment #11</a>)
+<span class="quote">&gt; Thanks for responding.  But I do not quiet understand what you means.
+&gt; 
+&gt; Rule is
+&gt;         &lt;match target=&quot;pattern&quot;&gt;
+&gt;                 &lt;test name=&quot;family&quot;&gt;
+&gt;                         &lt;string&gt;Courier&lt;/string&gt;
+&gt;                         &lt;string&gt;Courier New&lt;/string&gt;
+&gt;                 &lt;/test&gt;
+&gt;                 &lt;edit binding=&quot;strong&quot; mode=&quot;prepend&quot; name=&quot;family&quot;&gt;
+&gt;                         &lt;string&gt;monospace&lt;/string&gt;
+&gt;                 &lt;/edit&gt;
+&gt;         &lt;/match&gt;
+&gt; 
+&gt; Suppose we do
+&gt; $ fc-match &quot;Courier New&quot;
+&gt; 
+&gt; The query before the rule apply is [ .. &quot;Courier New&quot; .. ].
+&gt; 
+&gt; Why after the rule applied, monospace is not added before &quot;Courier New&quot;?</span >
+
+Because you probably have &quot;Courier&quot; in the pattern and your rule tries to test it first. fontconfig finds it out earlier than &quot;Courier New&quot; and apply the edit pattern to it then. the bad news for you is &quot;Courier&quot; appears after &quot;Courier New&quot;. so your pattern after FcConfigSubstitute() should looks like the pseudo array in <a href="show_bug.cgi?id=33644#c9">comment#9</a>.
+
+You can see with FC_DEBUG=4 fc-match ... what happened there.</pre>
+    </div>
+  <div id="c13" class="bz_comment">
+
+      <div class="bz_comment_head">
+
+
+
+        <span class="bz_comment_number">
+          <a 
+             href="show_bug.cgi?id=33644#c13">Comment 13</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><span class="fn">Yichao Zhou</span>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2012-04-02 01:59:45 UTC
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" >Oh.  That's reasonable.</pre>
+    </div>
+  <div id="c14" class="bz_comment">
+
+      <div class="bz_comment_head">
+
+
+
+        <span class="bz_comment_number">
+          <a 
+             href="show_bug.cgi?id=33644#c14">Comment 14</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><span class="fn">Behdad Esfahbod</span>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2012-04-02 14:00:59 UTC
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi?id=33644#c4">comment #4</a>)
+<span class="quote">&gt; Behdad, what is the expected syntax to match &quot;Courier&quot; or &quot;Courier New&quot; on the
+&gt; family name FWIW?
+&gt; 
+&gt; I've tried to figure it out with:
+&gt; 
+&gt; &lt;match&gt;
+&gt;   &lt;test name=&quot;family&quot;&gt;
+&gt;     &lt;or&gt;
+&gt;       &lt;string&gt;Courier New&lt;/string&gt;
+&gt;       &lt;string&gt;Courier&lt;/string&gt;
+&gt;     &lt;/or&gt;
+&gt;   &lt;/test&gt;
+&gt;   ...
+&gt; &lt;/match&gt;
+&gt; 
+&gt; and
+&gt; 
+&gt; &lt;match&gt;
+&gt;   &lt;test name=&quot;family&quot;&gt;
+&gt;     &lt;string&gt;Courier New&lt;/string&gt;
+&gt;     &lt;or&gt;
+&gt;       &lt;test name=&quot;family&quot;&gt;
+&gt;         &lt;string&gt;Courier&lt;/string&gt;
+&gt;       &lt;/test&gt;
+&gt;     &lt;/or&gt;
+&gt;   &lt;/test&gt;
+&gt;   ...
+&gt; &lt;/match&gt;</span >
+
+How about:
+
+&lt;match&gt;
+  &lt;or&gt;
+    &lt;test ...&gt;...&lt;/test&gt;
+    &lt;test ...&gt;...&lt;/test&gt;
+  &lt;/or&gt;
+&lt;/match&gt;
+
+?</pre>
+    </div>
+  <div id="c15" class="bz_comment">
+
+      <div class="bz_comment_head">
+
+
+
+        <span class="bz_comment_number">
+          <a 
+             href="show_bug.cgi?id=33644#c15">Comment 15</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><span class="fn">Behdad Esfahbod</span>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2012-04-02 14:02:18 UTC
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi?id=33644#c8">comment #8</a>)
+<span class="quote">&gt; thinking about this again, supporting FcOpComma in &lt;test&gt; sounds making sense.
+&gt; For the case of object == A and object == B:
+&gt; 
+&gt; &lt;test name=&quot;object&quot; qual=&quot;all&quot;&gt;
+&gt;   &lt;string&gt;A&lt;/string&gt;
+&gt;   &lt;string&gt;B&lt;/string&gt;
+&gt; &lt;/test&gt;
+&gt; 
+&gt; For the case of object == A or object == B:
+&gt; 
+&gt; &lt;test name=&quot;object&quot; qual=&quot;any&quot;&gt;
+&gt;   &lt;string&gt;A&lt;/string&gt;
+&gt;   &lt;string&gt;B&lt;/string&gt;
+&gt; &lt;/test&gt;</span >
+
+This would be abusing current semantics.  Currently qual=&quot;all&quot; means all values of the elements match the provided value.  You are turning it into something else.  I don't think we should do that.</pre>
+    </div>
+  <div id="c16" class="bz_comment">
+
+      <div class="bz_comment_head">
+
+
+
+        <span class="bz_comment_number">
+          <a 
+             href="show_bug.cgi?id=33644#c16">Comment 16</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><span class="fn">Akira TAGOH</span>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2012-04-02 19:52:32 UTC
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi?id=33644#c14">comment #14</a>)
+<span class="quote">&gt; How about:
+&gt; 
+&gt; &lt;match&gt;
+&gt;   &lt;or&gt;
+&gt;     &lt;test ...&gt;...&lt;/test&gt;
+&gt;     &lt;test ...&gt;...&lt;/test&gt;
+&gt;   &lt;/or&gt;
+&gt; &lt;/match&gt;
+&gt; 
+&gt; ?</span >
+
+According to the DTD, it's not supposed to work.
+
+(In reply to <a href="show_bug.cgi?id=33644#c15">comment #15</a>)
+<span class="quote">&gt; This would be abusing current semantics.  Currently qual=&quot;all&quot; means all values
+&gt; of the elements match the provided value.  You are turning it into something
+&gt; else.  I don't think we should do that.</span >
+
+Well, I may be misunderstanding what you are saying. assuming that &quot;elements&quot; means &quot;objects&quot; in the pattern, because you were referring to &quot;provided value&quot; there. I have no idea anything else. if my guess is wrong, sorry in advance - That sounds inconsistent. the document says:
+
+    if 'qual' is 'any', then the match succeeds if any value in the field matche
+s.
+    if 'qual' is 'all', then the match succeeds only if all values match.
+    if 'qual' is 'first', then the match succeeds only if the first value matche
+s.
+    if 'qual' is 'not_first', then the match succeeds only if any value other th
+an
+
+it doesn't talk about all values of the *elements* and other _qual_ doesn't behave that way. given that your explanation is true, that is meaningless with specifying 'name' in qual=&quot;all&quot;.
+In fact, the target object is determined when creating the test object with FcTestCreate(). there are no way to see what else the objects is available after that. and actually &quot;qual&quot; is evaluated every time once a test unit is done. thus qual=&quot;all&quot; behaves the AND expression and qual=&quot;any&quot; behaves the OR expression in current implementation.</pre>
+    </div>
+  <div id="c17" class="bz_comment">
+
+      <div class="bz_comment_head">
+
+
+
+        <span class="bz_comment_number">
+          <a 
+             href="show_bug.cgi?id=33644#c17">Comment 17</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><span class="fn">Akira TAGOH</span>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2012-05-01 03:28:14 UTC
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi?id=33644#c12">comment #12</a>)
+<span class="quote">&gt; Because you probably have &quot;Courier&quot; in the pattern and your rule tries to test
+&gt; it first. fontconfig finds it out earlier than &quot;Courier New&quot; and apply the edit
+&gt; pattern to it then. the bad news for you is &quot;Courier&quot; appears after &quot;Courier
+&gt; New&quot;. so your pattern after FcConfigSubstitute() should looks like the pseudo
+&gt; array in <a href="show_bug.cgi?id=33644#c9">comment#9</a>.
+&gt; 
+&gt; You can see with FC_DEBUG=4 fc-match ... what happened there.</span >
+
+For reasonable solution, we could refer the binding to determine which is better to match and edit the pattern.
+
+for example:
+FcConfigSubstitute test pattern any family Equal &quot;Helvetica&quot; Comma &quot;Arial&quot;
+Substitute match
+        pattern any family Equal &quot;Helvetica&quot; Comma &quot;Arial&quot;
+edit
+        Edit family Prepend &quot;VL Gothic&quot;;
+
+Prepend list before  &quot;Arial&quot;(s) &quot;Liberation Sans&quot;(s) &quot;Albany&quot;(s) &quot;Albany AMT&quot;(s)
+ &quot;Helvetica&quot;(w) &quot;Nimbus Sans L&quot;(w) &quot;sans-serif&quot;(w)
+Prepend list after  &quot;Arial&quot;(s) &quot;Liberation Sans&quot;(s) &quot;Albany&quot;(s) &quot;Albany AMT&quot;(s) 
+&quot;VL Gothic&quot;(w) &quot;Helvetica&quot;(w) &quot;Nimbus Sans L&quot;(w) &quot;sans-serif&quot;(w)
+FcConfigSubstitute editPattern has 1 elts (size 16)
+        family: &quot;Arial&quot;(s) &quot;Liberation Sans&quot;(s) &quot;Albany&quot;(s) &quot;Albany AMT&quot;(s) &quot;VL 
+Gothic&quot;(w) &quot;Helvetica&quot;(w) &quot;Nimbus Sans L&quot;(w) &quot;sans-serif&quot;(w)
+
+As I mentioned in the <a href="show_bug.cgi?id=33644#c12">comment#12</a>, this is correct behavior in current implementation, because of the matching order depends on the order of the rule. so adding &quot;VL Gothic&quot; prior to &quot;Helvetica&quot;. however what one expects here should be to be added prior to &quot;Arial&quot;. so we can check the binding value of &quot;Helvetica&quot; and &quot;Arial&quot; and do the thing for higher priority.</pre>
+    </div>
+  <div id="c18" class="bz_comment">
+
+      <div class="bz_comment_head">
+
+
+
+        <span class="bz_comment_number">
+          <a 
+             href="show_bug.cgi?id=33644#c18">Comment 18</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><span class="fn">Akira TAGOH</span>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2012-05-01 03:37:58 UTC
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" >though it won't works if other rules gives binding=&quot;strong&quot; to Helvetica in this case. so maybe a good idea to output a debug log how fontconfig decide the position to edit the pattern.</pre>
+    </div>
+  <div id="c19" class="bz_comment">
+
+      <div class="bz_comment_head">
+
+
+
+        <span class="bz_comment_number">
+          <a 
+             href="show_bug.cgi?id=33644#c19">Comment 19</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><span class="fn">Akira TAGOH</span>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2012-05-20 23:13:54 UTC
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" >After some discussion on the list, I think it may be a good idea to warn when multiple values are sets into &lt;test&gt;:
+
+<a href="http://cgit.freedesktop.org/~tagoh/fontconfig/commit/?h=bz33644">http://cgit.freedesktop.org/~tagoh/fontconfig/commit/?h=bz33644</a></pre>
+    </div>
+  <div id="c20" class="bz_comment">
+
+      <div class="bz_comment_head">
+
+
+
+        <span class="bz_comment_number">
+          <a 
+             href="show_bug.cgi?id=33644#c20">Comment 20</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><span class="fn">Akira TAGOH</span>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2012-05-24 21:26:02 UTC
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" >Merged into master. just for references:
+
+For the AND operator:
+
+&lt;match&gt;
+  &lt;test name=&quot;object&quot;.../test&gt;
+  &lt;test name=&quot;object&quot;.../test&gt;
+  &lt;edit.../edit&gt;
+&lt;/match&gt;
+
+For the OR operator:
+&lt;match&gt;
+  &lt;test name=&quot;object&quot;.../test&gt;
+  &lt;edit.../edit&gt;
+&lt;/match&gt;
+&lt;match&gt;
+  &lt;test name=&quot;object&quot;.../test&gt;
+  &lt;edit.../edit&gt;
+&lt;/match&gt;
+
+the above should works.</pre>
+    </div>
+  <div id="c21" class="bz_comment">
+
+      <div class="bz_comment_head">
+
+
+
+        <span class="bz_comment_number">
+          <a 
+             href="show_bug.cgi?id=33644#c21">Comment 21</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><span class="fn">Yichao Zhou</span>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2012-05-24 21:52:25 UTC
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" >Thanks!
+
+However, the OR operator isn't very user-friendly and beautiful, since we need to do same &lt;edit&gt; command twice.  Will the feature to simplify this operation be added in the future?</pre>
+    </div>
+  <div id="c22" class="bz_comment">
+
+      <div class="bz_comment_head">
+
+
+
+        <span class="bz_comment_number">
+          <a 
+             href="show_bug.cgi?id=33644#c22">Comment 22</a>
+        </span>
+
+        <span class="bz_comment_user"><span class="vcard"><span class="fn">Akira TAGOH</span>
+</span>
+        </span>
+
+        <span class="bz_comment_user_images">
+        </span>
+
+        <span class="bz_comment_time">
+          2012-05-24 22:20:56 UTC
+        </span>
+      </div>
+
+
+
+<pre class="bz_comment_text" >(In reply to <a href="show_bug.cgi?id=33644#c21">comment #21</a>)
+<span class="quote">&gt; Thanks!
+&gt; 
+&gt; However, the OR operator isn't very user-friendly and beautiful, since we need
+&gt; to do same &lt;edit&gt; command twice.  Will the feature to simplify this operation
+&gt; be added in the future?</span >
+
+I know that. although I can't promise anything so far but we may have something later if anyone propose the reasonable solution; the problem we are aware of on this matter is, the target selection for &lt;edit&gt; isn't necessarily suitable for everyone when multiple values appears in &lt;test&gt;. current implementation also isn't designed to be used that way.</pre>
+    </div>
+  
+
+
+  
+
+</td>
+<td>
+</td>
+</tr></table>
+  </div>
+        
+
+</form>
+
+<hr>
+<ul class="related_actions">
+    <li><a href="show_bug.cgi?format=multiple&amp;id=33644">Format For Printing</a></li>
+    <li>&nbsp;-&nbsp;<a href="show_bug.cgi?ctype=xml&amp;id=33644">XML</a></li>
+    <li>&nbsp;-&nbsp;<a href="enter_bug.cgi?cloned_bug_id=33644">Clone This Bug</a></li>
+    
+    <li>&nbsp;-&nbsp;<a href="#">Top of page </a></li>
+    </ul>        
+
+
+<div class="navigation">
+  
+  <i><font color="#777777">First</font></i>
+  <i><font color="#777777">Last</font></i>
+  <i><font color="#777777">Prev</font></i>
+  <i><font color="#777777">Next</font></i>
+  &nbsp;&nbsp;
+  <i><font color="#777777">This bug is not in your last
+    search results.</font></i>
+</div>
+
+<br>
+</div>
+
+
+
+<div id="footer">
+  <div class="intro"></div>
+
+
+
+
+<ul id="useful-links">
+  <li id="links-actions"><ul class="links">
+  <li><a href="./">Home</a></li>
+  <li><span class="separator">| </span><a href="enter_bug.cgi">New</a></li>
+  <li><span class="separator">| </span><a href="describecomponents.cgi">Browse</a></li>
+  <li><span class="separator">| </span><a href="query.cgi">Search</a></li>
+
+  <li class="form">
+    <span class="separator">| </span>
+    <form action="buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+    <input class="txt" type="text" id="quicksearch_bottom" name="quicksearch" 
+           title="Quick Search" value="">
+    <input class="btn" type="submit" value="Search" 
+           id="find_bottom"></form>
+  <a href="page.cgi?id=quicksearch.html" title="Quicksearch Help">[?]</a></li>
+
+  <li><span class="separator">| </span><a href="report.cgi">Reports</a></li>
+
+  <li>
+      <span class="separator">| </span>
+        <a href="request.cgi">Requests</a></li>
+
+  <li>
+        <span class="separator">| </span>
+        <a href="docs/en/html/bug_page.html" target="_blank">Help</a>
+      </li>
+    
+      <li id="new_account_container_bottom">
+        <span class="separator">| </span>
+        <a href="createaccount.cgi">New&nbsp;Account</a>
+      </li>
+
+    <li id="mini_login_container_bottom">
+  <span class="separator">| </span>
+  <a id="login_link_bottom" href="https://bugs.freedesktop.org/show_bug.cgi?id=33644&amp;GoAheadAndLogIn=1"
+     onclick="return show_mini_login_form('_bottom')">Log In</a>
+
+  
+  <form action="https://bugs.freedesktop.org/show_bug.cgi?id=33644" method="POST" 
+        class="mini_login bz_default_hidden"
+        id="mini_login_bottom"
+        onsubmit="return check_mini_login_fields( '_bottom' );"
+  >
+    <input id="Bugzilla_login_bottom" 
+           class="bz_login"
+           name="Bugzilla_login"
+           title="Login"
+           onfocus="mini_login_on_focus('_bottom')"
+    >
+    <input class="bz_password" 
+           id="Bugzilla_password_bottom" 
+           name="Bugzilla_password"
+           type="password"
+           title="Password"
+    >
+    <input class="bz_password bz_default_hidden bz_mini_login_help" type="text" 
+           id="Bugzilla_password_dummy_bottom" value="password"
+           title="Password"
+           onfocus="mini_login_on_focus('_bottom')"
+    >
+    <input type="submit" name="GoAheadAndLogIn" value="Log in" 
+            id="log_in_bottom">
+    <script type="text/javascript">
+      mini_login_constants = {
+          "login" : "login",
+          "warning" : "You must set the login and password before logging in."
+      };
+      
+      if (YAHOO.env.ua.gecko || YAHOO.env.ua.ie || YAHOO.env.ua.opera) {
+          YAHOO.util.Event.onDOMReady(function() {
+              init_mini_login_form('_bottom');
+          });
+      }
+      else {
+          YAHOO.util.Event.on(window, 'load', function () {
+              window.setTimeout(function() {
+                  init_mini_login_form('_bottom');
+              }, 200);
+          });
+    }
+    </script>
+    <a href="#" onclick="return hide_mini_login_form('_bottom')">[x]</a>
+  </form>
+</li>
+<li id="forgot_container_bottom">
+  <span class="separator">| </span>
+  <a id="forgot_link_bottom" href="https://bugs.freedesktop.org/show_bug.cgi?id=33644&amp;GoAheadAndLogIn=1#forgot"
+     onclick="return show_forgot_form('_bottom')">Forgot Password</a>
+  <form action="token.cgi" method="post" id="forgot_form_bottom"
+        class="mini_forgot bz_default_hidden">
+    <label for="login_bottom">Login:</label>
+    <input type="text" name="loginname" size="20" id="login_bottom">
+    <input id="forgot_button_bottom" value="Reset Password" 
+           type="submit">
+    <input type="hidden" name="a" value="reqpw">
+    <input type="hidden" id="token" name="token" value="1405405127-46d093ad1bb1b04f70a31ca9b9b13a78">
+    <a href="#" onclick="return hide_forgot_form('_bottom')">[x]</a>
+  </form>
+</li>
+</ul>
+  </li>
+
+  
+    
+
+  
+
+
+  
+</ul>
+
+  <div class="outro"></div>
+</div>
+
+
+</body>
+</html>
