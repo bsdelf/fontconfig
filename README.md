@@ -19,4 +19,5 @@ Copy "local.conf" to one of following path:
 
 - /etc/fonts/local.conf
 - /usr/local/etc/fonts/local.conf
+- ~/.config/fontconfig/fonts.conf
 - ~/.fonts.conf
